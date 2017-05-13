@@ -17,7 +17,7 @@ import bbva.qhsd.neo4j.domain.WorkGroup;
 public interface UserRepository extends PagingAndSortingRepository<User, Long> {
 	
 	
-	User findByUserId(@Param("uid") String uid);
+	User findByUserId(@Param("userId") String userId);
 	
 	//GET MEMBERS
 	@Query("MATCH (m:User)-[:BELONGS]-(wg) WHERE m.name = {uid} RETURN wg")

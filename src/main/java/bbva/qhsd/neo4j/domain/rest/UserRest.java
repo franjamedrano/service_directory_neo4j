@@ -63,6 +63,12 @@ public class UserRest {
 	}
 
 
+	public String getId() {
+		return id;
+	}
+
+	
+
 
 	 
 }

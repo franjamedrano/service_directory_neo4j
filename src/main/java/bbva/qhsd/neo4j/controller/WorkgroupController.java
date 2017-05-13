@@ -1,7 +1,5 @@
 package bbva.qhsd.neo4j.controller;
 
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -51,5 +49,15 @@ public class WorkgroupController {
 	@RequestMapping(value = "/{workGroupId}/members/{userId}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable("workGroupId") String workGroupId,@PathVariable("userId") String userId) {
 		wgService.deleteMember2WorkGroup(workGroupId,userId);
+	}
+	
+	@RequestMapping(value = "/{workGroupId}/supervisors", method = RequestMethod.POST)
+	public void addSupervisor(@PathVariable("workGroupId") String workGroupId,@RequestBody WorkGroupAddRest input) {
+		wgService.addSupervisor2WorkGroup(workGroupId,input);
+	}
+	
+	@RequestMapping(value = "/{workGroupId}/supervisors/{userId}", method = RequestMethod.DELETE)
+	public void deleteSupervisor(@PathVariable("workGroupId") String workGroupId,@PathVariable("userId") String userId) {
+		wgService.deleteSupervisor2WorkGroup(workGroupId,userId);
 	}
 }

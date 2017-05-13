@@ -94,6 +94,28 @@ public class WorkgroupService {
 		
 	}
 	
+	public void addSupervisor2WorkGroup(String workGroupId,WorkGroupAddRest wgar){
+		
+		WorkGroup wg = wgRepository.findByWorkGroupId(workGroupId);
+		User u = uRepository.findByUserId(wgar.getUserId());
+		
+		u.addSupervise(wg);
+		
+		uRepository.save(u);
+		
+	}
+	
+	public void deleteSupervisor2WorkGroup(String workGroupId,String userId){
+		
+		WorkGroup wg = wgRepository.findByWorkGroupId(workGroupId);
+		User u = uRepository.findByUserId(userId);
+		
+		u.getSupervises().remove(wg);
+		
+		uRepository.save(u);
+		
+	}
+	
 	public void deleteWorkGroup(String wgId){
 		WorkGroup wg=  wgRepository.findByWorkGroupId(wgId);
 		
@@ -101,6 +123,8 @@ public class WorkgroupService {
 			wgRepository.delete(wg);
 		}
 	}
+	
+
 	
 
 }
