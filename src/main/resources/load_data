@@ -8,8 +8,14 @@ CREATE (IMC00006:User {userId:'IMC00006'})
 CREATE (IMC00007:User {userId:'IMC00007'})
 CREATE (IMC00008:User {userId:'IMC00008'})
 CREATE (IMC00009:User {userId:'IMC00009'})
+CREATE (PRU0001:User {userId:'PRU0001'})
+CREATE (PRU0002:User {userId:'PRU0002'})
+CREATE (PRU0003:User {userId:'PRU0003'})
+CREATE (PRU0004:User {userId:'PRU0004'})
+CREATE (PRU0005:User {userId:'PRU0005'})
 CREATE (O_01820005:WorkGroup {workGroupId:'O_01820005',name:'Group 1'})
 CREATE (O_01820012:WorkGroup {workGroupId:'O_01820012',name:'Group 2'})
+CREATE (O_prueba:WorkGroup {workGroupId:'O_prueba',name:'Group Prueba'})
 CREATE
   (IMC00000)-[:BELONGS]->(O_01820005),
   (IMC00001)-[:BELONGS]->(O_01820005),
@@ -21,6 +27,10 @@ CREATE
   (IMC00007)-[:BELONGS]->(O_01820005),
   (IMC00008)-[:BELONGS]->(O_01820005),
   (IMC00009)-[:BELONGS]->(O_01820005),
+  (PRU0001)-[:BELONGS]->(O_prueba),
+  (PRU0002)-[:BELONGS]->(O_prueba),
+  (PRU0003)-[:BELONGS]->(O_prueba),
+  (PRU0004)-[:BELONGS]->(O_prueba),
+  (PRU0005)-[:BELONGS]->(O_prueba),
   (IMC00000)-[:SUPERVISE]->(O_01820005)
-
 ;

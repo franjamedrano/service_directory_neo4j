@@ -12,7 +12,7 @@ public class UserRest {
 
 	private String id;
 	
-	private Collection<String> belongs = new ArrayList<>();
+	private Collection<BelongsRest> belongs = new ArrayList<>();
 	
 	private List<String> supervises = new ArrayList<>();
 	
@@ -28,12 +28,12 @@ public class UserRest {
 	}
 
 
-	public Collection<String> getBelongs() {
+	public Collection<BelongsRest> getBelongs() {
 		return belongs;
 	}
 
 
-	public void setBelongs(Collection<String> belongs) {
+	public void setBelongs(Collection<BelongsRest> belongs) {
 		this.belongs = belongs;
 	}
 

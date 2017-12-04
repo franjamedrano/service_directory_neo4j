@@ -13,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import bbva.qhsd.neo4j.domain.User;
 import bbva.qhsd.neo4j.domain.WorkGroup;
+import bbva.qhsd.neo4j.domain.rest.BelongsRest;
+import bbva.qhsd.neo4j.domain.rest.DataRest;
 import bbva.qhsd.neo4j.domain.rest.UserRest;
 import bbva.qhsd.neo4j.domain.rest.WorkGroupAddRest;
 import bbva.qhsd.neo4j.domain.rest.WorkGroupRest;
@@ -28,33 +30,37 @@ public class UserService {
 	
 	final static Logger logger = Logger.getLogger(UserService.class);
 
-	public UserRest getUser(String uid,String expand) {
+	public DataRest getUserData(String uid,String expand) {
 		
 		User u=  uRepository.findByUserId(uid);
 		
 		UserRest ur = new UserRest(u.getUserId());
 		
+		/* TODO
 		if (expand!= null && expand.equals("supervises")){
 			ur.setSupervises(workGroup2wgIds(u.getSupervises()));
 		}
+		*/
 		
 		if (expand!= null && expand.equals("belongs")){
 			ur.setBelongs(workGroup2wgIds(u.getBelongs()));
 		}
-		
+		/* TODO
 		if (expand!= null && expand.equals("user_supervises")){
 			ur.setUser_supervises(workGroup2uIds(u.getSupervises()));
 		}
-		
-		return ur;
+		*/
+
+		DataRest dr = new DataRest(ur);
+		return dr;
 	}
 	
-	private List<String> workGroup2wgIds(List<WorkGroup> wgs){
+	private List<BelongsRest> workGroup2wgIds(List<WorkGroup> wgs){
 		
-		List<String> result = new ArrayList<String>();
+		List<BelongsRest> result = new ArrayList<BelongsRest>();
 		
 		for( WorkGroup wg  : wgs){
-			result.add(wg.getWorkGroupId());
+			result.add(new BelongsRest(wg.getWorkGroupId(),wg.getName()));
 		}
 		
 		return result;
