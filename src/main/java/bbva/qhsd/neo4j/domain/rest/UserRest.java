@@ -14,9 +14,9 @@ public class UserRest {
 	
 	private Collection<BelongsRest> belongs = new ArrayList<>();
 	
-	private List<String> supervises = new ArrayList<>();
+	//private List<String> supervises = new ArrayList<>();
 	
-	private List<String> user_supervises = new ArrayList<>();
+	//private List<String> user_supervises = new ArrayList<>();
 
 	public UserRest() {
 	}
@@ -37,7 +37,7 @@ public class UserRest {
 		this.belongs = belongs;
 	}
 
-
+	/*
 	public List<String> getSupervises() {
 		return supervises;
 	}
@@ -56,6 +56,7 @@ public class UserRest {
 	public void setUser_supervises(List<String> user_supervises) {
 		this.user_supervises = user_supervises;
 	}
+	*/
 
 
 	public void setId(String id) {
